@@ -12,13 +12,13 @@ module.exports = {
   entry: {
     app: {
       import: path.resolve(__dirname, '../src', 'app.tsx'),
-      filename: 'app/index.js',
+      filename: 'index.js',
     },
   },
   output: {
     path: path.join(__dirname, '../dist'),
     publicPath: '/',
-    assetModuleFilename: 'app/assets/[hash][ext][query]',
+    assetModuleFilename: 'assets/[hash][ext][query]',
   },
   module: {
     rules: [
@@ -71,7 +71,7 @@ module.exports = {
             const allChunksNames = chunks
               .map(item => item.name.split('/').pop())
               .join('~');
-            return `app/vendors/${cacheGroupKey}-${allChunksNames}`;
+            return `vendors/${cacheGroupKey}-${allChunksNames}`;
           },
           chunks: 'all',
           minSize: 10000,
@@ -83,7 +83,7 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      title: 'Surf',
+      title: 'Starter',
       template: './src/index.ejs',
       filename: './[name]/index.html',
       chunks: [
