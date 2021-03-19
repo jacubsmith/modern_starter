@@ -5,7 +5,6 @@ const HOST = process.env.AUTH_HOST || `${window.location.protocol}//${window.loc
 const REDIRECT_URI = `${HOST}${process.env.AUTH_LOGON_CALLBACK}`;
 const POST_LOGOUT_REDIRECT_URI = `${HOST}${process.env.POST_LOGOUT_REDIRECT_URI}`;
 const SCOPES = process.env.AUTH_SCOPES || DefaultScopes;
-const DISABLE_HTTPS_CHECK = !!(process.env.OKTA_TESTING_DISABLEHTTPSCHECK || '').match(/true/i);
 const PKCE = !!(process.env.AUTH_PKCE || '').match(/true/i);
 
 const config = {
@@ -14,7 +13,6 @@ const config = {
     redirectUri: REDIRECT_URI,
     postLogoutRedirectUri: POST_LOGOUT_REDIRECT_URI,
     scopes: SCOPES.split(/,\s?/),
-    disableHttpsCheck: DISABLE_HTTPS_CHECK,
     pkce: PKCE,
 };
 
